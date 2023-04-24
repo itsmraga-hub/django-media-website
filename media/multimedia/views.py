@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView, FormView
 from multimedia.models import AudioMedia, VideoMedia, ImageMedia
-from .forms import AddImageForm
+from .forms import AddImageForm, AddAudioForm, AddVideoForm
 
 
 # Create your views here.
@@ -38,7 +38,7 @@ class ImageListView(ListView):
         context = super().get_context_data(**kwargs)
         images = ImageMedia.objects.all()
         context['images'] = images
-        # print(context['images'])
+        print("URL: ", context['images'][0].image.url)
         return context
 
 
@@ -53,4 +53,32 @@ class AddImageView(FormView):
           name = form.cleaned_data['name']
         )
         image.save()
+        return super().form_valid(form)
+
+
+class AddVideoView(FormView):
+    template_name = 'add_video.html'
+    form_class = AddVideoForm
+    success_url = "/media/videos"
+
+    def form_valid(self, form):
+        video = VideoMedia.objects.create(
+          file = form.cleaned_data['video'],
+          title = form.cleaned_data['title']
+        )
+        video.save()
+        return super().form_valid(form)
+
+
+class AddAudioView(FormView):
+    template_name = 'add_audio.html'
+    form_class = AddAudioForm
+    success_url = "/media/audios"
+
+    def form_valid(self, form):
+        audio = AudioMedia.objects.create(
+          file = form.cleaned_data['audio'],
+          title = form.cleaned_data['title']
+        )
+        audio.save()
         return super().form_valid(form)
