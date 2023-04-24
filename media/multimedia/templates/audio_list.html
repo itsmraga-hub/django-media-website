@@ -1,2 +1,7 @@
 <h1>Audios List</h1>
 
+<ul>
+{% for audio in audios %}
+  <li>{{ audio.name }}</li>
+{% endfor %}
+</ul>
