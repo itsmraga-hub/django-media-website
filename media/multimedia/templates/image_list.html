@@ -1,0 +1,14 @@
+<h1>Images List</h1>
+
+<ul>
+{% for image in images %}
+<li>
+  <div>
+    {{ image.name }}
+    <img src="{{ image.url }}" alt="" srcset="">
+  </div>
+</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'add_image' %}">Add Image</a>
