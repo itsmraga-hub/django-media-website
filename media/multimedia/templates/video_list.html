@@ -1,0 +1,16 @@
+<h1>Videos List</h1>
+
+<ul>
+  {% for video in videos %}
+  <div>
+    <li>{{ video.title }}</li>
+    <video width="200px" height="200px" autoplay>
+      <source src="{{ video.video.url }}" type="video/mp4">
+    </video>
+  </div>
+
+  {% endfor %}
+</ul>
+
+
+<a href="{% url 'add_video' %}">Add Video</a>

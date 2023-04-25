@@ -1,0 +1,15 @@
+<h1>Audios List</h1>
+
+<ul>
+  {% for audio in audios %}
+  <div>
+    <li>{{ audio.name }}</li>
+    <audio controls>
+      <source src="{{audio.audio.url}}" type="audio/mpeg">
+    </audio>
+  </div>
+  {% endfor %}
+</ul>
+
+
+<a href="{% url 'add_audio' %}">Add Audio</a>
