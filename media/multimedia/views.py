@@ -38,7 +38,6 @@ class ImageListView(ListView):
         context = super().get_context_data(**kwargs)
         images = ImageMedia.objects.all()
         context['images'] = images
-        # print("URL: ", context['images'][0].image.url)
         return context
 
 
@@ -63,7 +62,7 @@ class AddVideoView(FormView):
 
     def form_valid(self, form):
         video = VideoMedia.objects.create(
-          file = form.cleaned_data['video'],
+          file = form.cleaned_data['file'],
           title = form.cleaned_data['title']
         )
         video.save()
@@ -77,7 +76,7 @@ class AddAudioView(FormView):
 
     def form_valid(self, form):
         audio = AudioMedia.objects.create(
-          file = form.cleaned_data['audio'],
+          file = form.cleaned_data['file'],
           title = form.cleaned_data['title']
         )
         audio.save()

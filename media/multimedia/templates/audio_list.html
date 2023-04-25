@@ -1,9 +1,14 @@
 <h1>Audios List</h1>
 
 <ul>
-{% for audio in audios %}
-  <li>{{ audio.name }}</li>
-{% endfor %}
+  {% for audio in audios %}
+  <div>
+    <li>{{ audio.name }}</li>
+    <audio controls>
+      <source src="{{audio.audio.url}}" type="audio/mpeg">
+    </audio>
+  </div>
+  {% endfor %}
 </ul>
 
 
