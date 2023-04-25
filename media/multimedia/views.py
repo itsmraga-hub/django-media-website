@@ -38,7 +38,7 @@ class ImageListView(ListView):
         context = super().get_context_data(**kwargs)
         images = ImageMedia.objects.all()
         context['images'] = images
-        print("URL: ", context['images'][0].image.url)
+        # print("URL: ", context['images'][0].image.url)
         return context
 
 
